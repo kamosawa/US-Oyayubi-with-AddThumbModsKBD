@@ -1,5 +1,5 @@
 {
-  "title": "us_oyayubi_with_oyamodi-keyboard",
+  "title": "us_oyayubi_with_thumbmods_kbd",
   "rules": [
     {
       "description": "each key setting",
@@ -4476,6 +4476,88 @@
       ]
     },
     {
+      "description": "F15 -> toggle IME",
+      "manipulators": 
+        [
+            {
+                "type": "basic",
+                "from": {
+                    "key_code": "f15",
+                    "modifiers": {
+                        "optional": ["any"]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "f15",
+                        "lazy": true
+                    }
+                ],
+                "to_if_alone": [
+                    {
+                        "key_code": "japanese_eisuu"
+                    }
+                ],
+                "to_if_held_down": [
+                    {
+                        "key_code": "right_command"
+                    }
+                ],
+                "conditions": [
+                    {
+                        "input_sources": [
+                            {
+                                "language": "ja"
+                            }
+                        ],
+                        "type": "input_source_if"
+                    }
+                ],
+                "parameters": {
+                    "basic.to_if_held_down_threshold_milliseconds": 100
+                }
+            },
+            {
+                "type": "basic",
+                "from": {
+                    "key_code": "f15",
+                    "modifiers": {
+                        "optional": ["any"]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "right_command",
+                        "lazy": true
+                    }
+                ],
+                "to_if_alone": [
+                    {
+                        "key_code": "japanese_kana"
+                    }
+                ],
+                "to_if_held_down": [
+                    {
+                        "key_code": "left_command"
+                    }
+                ],
+                "conditions": [
+                    {
+                        "input_sources": [
+                            {
+                                "language": "en"
+                            }
+                        ],
+                        "type": "input_source_if"
+                    }
+                ],
+                "parameters": {
+                    "basic.to_if_held_down_threshold_milliseconds": 100
+                }
+            }
+        ]
+    },
+    {
       "description": "left_command -> E, right_command -> J",
       "manipulators": [
         {
@@ -4501,7 +4583,7 @@
         },
         {
           "from": {
-            "key_code": "right_command",
+            "key_code": "f15",
             "modifiers": {
               "optional": [
                 "any"
@@ -4510,7 +4592,7 @@
           },
           "to": [
             {
-              "key_code": "right_command"
+              "key_code": "f15"
             }
           ],
           "to_if_alone": [
